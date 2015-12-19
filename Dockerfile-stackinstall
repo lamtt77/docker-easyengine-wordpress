@@ -1,0 +1,9 @@
+FROM lamtrantuan/easyengine-base-ubuntu:14.04
+
+## ee stack install for mysql and web
+RUN ee stack install --web
+RUN ee stack install --mysql
+
+COPY ./startStack.sh /
+
+EXPOSE 80 443 22222
