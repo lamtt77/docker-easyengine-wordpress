@@ -3,7 +3,6 @@ FROM lamtrantuan/docker-easyengine-wordpress
 
 ## ee stack install for mysql and web
 RUN ee stack install --web
-RUN ee stack install --mysql
 
 COPY ./startStack.sh /
 
