@@ -20,6 +20,10 @@ Once completed, we will be going to have:
 	ee site create wp.example.dev --user=YOURUSER --pass=YOURPSW --email=YOUREMAIL --wpsubdom
 	
 Alternative, we could create a pre-build stack image as follows:
-	<code>docker build -t ee-stack -f Dockerfile-stackinstall .</code>
+	docker build -t ee-stack -f Dockerfile-stackinstall .
 And then run ee-stack:
-	<code>docker run ee-stack -d</code>
+	docker run -itd -p 80:80 -p 443:443 -p 22222:22222 ee-stack bash
+
+After that, going inside the container to start the services:
+	docker exec -it ee-stack bash
+	-->#$ /startStack.sh 
