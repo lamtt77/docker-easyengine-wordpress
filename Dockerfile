@@ -16,3 +16,5 @@ CMD "source /etc/bash_completion.d/ee_auto.rc"
 
 EXPOSE 80 443 22222
 
+# Define default command.
+CMD ["bash"]
