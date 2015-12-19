@@ -11,7 +11,7 @@ wget -qO ee rt.cx/ee && sudo bash ee
 source /etc/bash_completion.d/ee_auto.rc
 ```
 
-+ Next step is to install the required stack and starting the services: MySQL (MariaDB), Web (Nginx + php5-fpm) and some admin utils
++ Next step is to run that base image and going inside setup the required stack and starting the services: MySQL (MariaDB), Web (Nginx + php5-fpm) and some admin utils
 ```sh
 ee stack install
 ee stack start
@@ -22,7 +22,7 @@ ee stack start
 ee site create wp.example.dev --user=YOURUSER --pass=YOURPSW --email=YOUREMAIL
 ```
 
-Or if you like to start with multi-site wordpress:
++ Or if you like to start with multi-site wordpress:
 ```sh
 ee site create wp.example.dev --user=YOURUSER --pass=YOURPSW --email=YOUREMAIL --wpsubdom
 ```
