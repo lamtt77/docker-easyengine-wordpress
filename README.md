@@ -43,3 +43,8 @@ After that, going inside the container to start the services:
 docker exec -it ee-stack bash
 -->#$ /startStack.sh
 ```
+
+
+# TODO for production site:
++ Mapping actual data volumes to host: MariaDB (/var/lib/mysql), WordPress (htdocs/html/php)
++ Split each stack service into its own container as practice advice for miro-services
