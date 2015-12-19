@@ -1,7 +1,7 @@
 # docker-easyengine-wordpress
 Orchestrate/Pre-Build the 15mins EasyEngine WordPress deployment into Docker image.
 
-Once completed, you will be going to have:
+Once completed, we will be going to have:
   + Vanilla Official Ubuntu:14.04 docker base image
 
   + EasyEngine base installation created:
@@ -18,3 +18,8 @@ Once completed, you will be going to have:
 
     Or if you like to start with multi-site wordpress:
 	ee site create wp.example.dev --user=YOURUSER --pass=YOURPSW --email=YOUREMAIL --wpsubdom
+	
+Alternative, we could create a pre-build stack image as follows:
+	docker build -t ee-stack -f Dockerfile-stackinstall .
+And then run ee-stack:
+	docker run ee-stack -d
