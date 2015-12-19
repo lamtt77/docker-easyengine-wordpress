@@ -2,6 +2,7 @@
 Orchestrate/Pre-Build the 15mins EasyEngine WordPress deployment into Docker image.
 
 Once completed, we will be going to have:
+
 1- Vanilla Official Ubuntu:14.04 docker base image
 
 2- EasyEngine base installation created:
