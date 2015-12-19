@@ -40,5 +40,5 @@ docker run -itd -p 80:80 -p 443:443 -p 22222:22222 ee-stack bash
 After that, going inside the container to start the services:
 ```sh
 docker exec -it ee-stack bash
+-->#$ /startStack.sh
 ```
-	-->#$ /startStack.sh 
