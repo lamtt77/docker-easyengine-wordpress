@@ -2,7 +2,7 @@ FROM lamtrantuan/docker-easyengine-wordpress:phusion-baseimage
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
 # Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
+#CMD ["/sbin/my_init"]
 
 ## ee stack install for mysql and web
 RUN ee stack install --web

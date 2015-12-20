@@ -2,7 +2,7 @@ FROM phusion/baseimage
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
 # Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
+#CMD ["/sbin/my_init"]
 
 ## Making EasyEngine aware of our name and email
 COPY ee-gitconfig /root/.gitconfig
