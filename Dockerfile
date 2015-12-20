@@ -1,5 +1,4 @@
-#FROM phusion/baseimage
-## Use official image for now
+## Use official image in master branch
 FROM ubuntu:14.04
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
