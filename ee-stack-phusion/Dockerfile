@@ -6,6 +6,7 @@ MAINTAINER Lam Tran <lamtt77@gmail.com>
 COPY ee-gitconfig /root/.gitconfig
 
 RUN echo `cat ~/.gitconfig`
+RUN apt-get update
 
 ## Get and install EasyEngine
 RUN apt-get install -y wget
