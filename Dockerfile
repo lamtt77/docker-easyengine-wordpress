@@ -1,4 +1,5 @@
 FROM ubuntu:14.04
+MAINTAINER Lam Tran <lamtt77@gmail.com>
 
 RUN echo "export TERM=xterm" >> /etc/bash.bashrc
 
