@@ -1,3 +1,5 @@
+#FROM phusion/baseimage
+## Use official image for now
 FROM ubuntu:14.04
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
