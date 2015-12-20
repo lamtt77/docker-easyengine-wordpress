@@ -6,4 +6,8 @@ RUN ee stack install --web
 
 COPY ./startStack.sh /
 
+## startStack.sh will need to customize to a non-stop service to use entrypoint
+#ENTRYPOINT /startStack.sh
+
 EXPOSE 80 443 22222
+#CMD ["echo Initializing..."]
