@@ -45,6 +45,11 @@ docker exec -it ee-stack bash
 -->#$ /startStack.sh
 ```
 
+# SECURITY
+* Please do change your secure http password (admin port 22222) at first run of the ee-stack image:
+```sh
+ee secure --auth
+```
 
 # TODO for production site:
 + Mapping actual data volumes to host: MariaDB (/var/lib/mysql), WordPress (htdocs/html/php)
