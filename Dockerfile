@@ -1,14 +1,12 @@
-#FROM phusion/baseimage
-## Use official image for now
-FROM ubuntu:14.04
+FROM phusion/baseimage
 MAINTAINER Lam Tran <lamtt77@gmail.com>
-
-RUN echo "export TERM=xterm" >> /etc/bash.bashrc
 
 ## Making EasyEngine aware of our name and email
 COPY ee-gitconfig /root/.gitconfig
 
 RUN echo `cat ~/.gitconfig`
+## Must run apt-get update before executing phusion/baseimage
+RUN apt-get update
 
 ## Get and install EasyEngine
 RUN apt-get install -y wget

@@ -1,5 +1,4 @@
-##FROM lamtrantuan/easyengine-base-ubuntu:14.04
-FROM lamtrantuan/docker-easyengine-wordpress
+FROM lamtrantuan/docker-easyengine-wordpress:phusion-baseimage
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
 ## ee stack install for mysql and web
