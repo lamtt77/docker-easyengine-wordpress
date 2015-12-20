@@ -35,10 +35,11 @@ docker build -t ee-stack -f Dockerfile-stackinstall .
 
 And then run ee-stack:
 ```sh
-docker run -itd -p 80:80 -p 443:443 -p 22222:22222 ee-stack bash
+docker run -rm -p 80:80 -p 443:443 -p 22222:22222 ee-stack
 ```
+A file type mis-match warning could be ignored if encountered.  Note that 'ee stack start' will be triggered automatically. 
 
-After that, going inside the container to start the services:
+Review entrypoint for the stack services:
 ```sh
 docker exec -it ee-stack bash
 -->#$ /startStack.sh
