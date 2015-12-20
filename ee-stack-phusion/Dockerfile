@@ -3,7 +3,7 @@ FROM phusion/baseimage
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
 ## Making EasyEngine aware of our name and email
-COPY ../ee-gitconfig /root/.gitconfig
+COPY ee-gitconfig /root/.gitconfig
 
 RUN echo `cat ~/.gitconfig`
 
@@ -17,7 +17,7 @@ CMD "source /etc/bash_completion.d/ee_auto.rc"
 ## ee stack install for mysql and web
 RUN ee stack install --web
 
-COPY ../startStack.sh /
+COPY startStack.sh /
 
 ENTRYPOINT /startStack.sh
 

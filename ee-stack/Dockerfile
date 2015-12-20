@@ -5,7 +5,7 @@ MAINTAINER Lam Tran <lamtt77@gmail.com>
 ## ee stack install for mysql and web
 RUN ee stack install --web
 
-COPY ../startStack.sh /
+COPY startStack.sh /
 
 ENTRYPOINT /startStack.sh
 
