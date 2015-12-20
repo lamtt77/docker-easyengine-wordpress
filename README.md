@@ -35,7 +35,7 @@ docker build -t ee-stack -f Dockerfile-stackinstall .
 
 And then run ee-stack:
 ```sh
-docker run -rm -p 80:80 -p 443:443 -p 22222:22222 ee-stack
+docker run --rm -p 80:80 -p 443:443 -p 22222:22222 ee-stack
 ```
 A file type mis-match warning could be ignored if encountered.  Note that 'ee stack start' will be triggered automatically. 
 
