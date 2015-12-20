@@ -51,6 +51,15 @@ docker exec -it ee-stack bash
 ee secure --auth
 ```
 
+# phusion/baseimage
+* Switch to phusion-baseimage branch
+
+# Docker Auto Build generated:
++ [ee-base](https://hub.docker.com/r/lamtrantuan/docker-easyengine-wordpress/) on Ubuntu:14.04
++ [ee-base](https://hub.docker.com/r/lamtrantuan/docker-easyengine-wordpress/) on phusion/baseimage
++ [ee-stack](https://hub.docker.com/r/lamtrantuan/docker-easyengine-stack/) on Ubuntu:14.04
++ [ee-stack](https://hub.docker.com/r/lamtrantuan/docker-easyengine-stack/) on phusion/baseimage
+
 # TODO for production site:
 + Mapping actual data volumes to host: MariaDB (/var/lib/mysql), WordPress (htdocs/html/php)
 + Split each stack service into its own container as practice advice for miro-services
