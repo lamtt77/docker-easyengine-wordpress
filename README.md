@@ -66,7 +66,7 @@ ee secure --auth
 + Mapping actual data volumes to host: MariaDB (/var/lib/mysql), WordPress (htdocs/html/php)
 + Split each stack service into its own container as practice advice for miro-services
 
-# Mapping volumes for web and db on auto-build ee-stack:
+# Mapping volumes for web and db on auto-build ee-stack
 ```sh
 docker run --rm --name wp-ee-stack \
   -p 80:80 -p 443:443 -p 22222:22222 \
@@ -83,7 +83,7 @@ docker exec -it wp-ee-stack bash
 id mysql -> get UID and GID
 exit
 
-+ Return to host, use usermod adn groupmod to modify host's mysql to UID and GID above 
++ Return to host, use usermod and groupmod to modify host's mysql to UID and GID above 
 ```
 
 ```sh
