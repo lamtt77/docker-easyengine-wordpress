@@ -45,6 +45,8 @@ docker exec -it ee-stack bash
 -->#$ /startStack.sh
 ```
 
+The pre-build Docker images are available to pull from Docker.  Please see Docker Auto Build section. 
+
 # SECURITY
 * Please do change your secure http password (admin port 22222) at first run of the ee-stack image:
 ```sh
@@ -54,12 +56,40 @@ ee secure --auth
 # phusion/baseimage
 * Switch to phusion-baseimage branch
 
-# Docker Auto Build generated:
+# Docker Auto Build generated
 + [ee-base](https://hub.docker.com/r/lamtrantuan/docker-easyengine-wordpress/) on Ubuntu:14.04
 + [ee-base](https://hub.docker.com/r/lamtrantuan/docker-easyengine-wordpress/) on phusion/baseimage
 + [ee-stack](https://hub.docker.com/r/lamtrantuan/docker-easyengine-stack/) on Ubuntu:14.04
 + [ee-stack](https://hub.docker.com/r/lamtrantuan/docker-easyengine-stack/) on phusion/baseimage
 
-# TODO for production site:
+# TODO for production site
 + Mapping actual data volumes to host: MariaDB (/var/lib/mysql), WordPress (htdocs/html/php)
 + Split each stack service into its own container as practice advice for miro-services
+
+# Mapping volumes for web and db on auto-build ee-stack:
+```sh
+docker run --rm --name wp-ee-stack \
+  -p 80:80 -p 443:443 -p 22222:22222 \
+  lamtrantuan/docker-easyengine-stack
+  
+sudo docker cp wp-ee-stack:/var/www/ /var/
+sudo docker cp wp-ee-stack:/var/lib/mysql/ /var/lib/
+```
+
++ MariaDB 10.1 is having an issue with mapping volume while 10.0 DOES work! So workaroud if still prefer to use 10.1
+```hack
+sudo useradd -U mysql && sudo chown -R mysql:mysql /var/lib/mysql
+docker exec -it wp-ee-stack bash
+id mysql -> get UID and GID
+exit
+
++ Return to host, use usermod adn groupmod to modify host's mysql to UID and GID above 
+```
+
+```sh
+docker stop wp-ee-stack
+docker run --rm --name wp-ee-stack \
+  -p 80:80 -p 443:443 -p 22222:22222 \
+  -v /var/lib/mysql:/var/lib/mysql \
+  -v /var/www:/var/www \
+  lamtrantuan/docker-easyengine-stack
