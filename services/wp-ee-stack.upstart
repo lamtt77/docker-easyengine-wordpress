@@ -1,0 +1,8 @@
+description "WordPress EE Stack container"
+author "Lam Tran"
+start on filesystem and started docker
+stop on runlevel [!2345]
+respawn
+script
+  /usr/bin/docker start -a wp-ee-stack
+end script

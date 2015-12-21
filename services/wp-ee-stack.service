@@ -1,0 +1,12 @@
+[Unit]
+Description=WordPress EE Stack container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a wp-ee-stack
+ExecStop=/usr/bin/docker stop -t 2 wp-ee-stack
+
+[Install]
+WantedBy=multi-user.target
