@@ -94,3 +94,15 @@ docker run --rm --name wp-ee-stack \
   -v /var/lib/mysql:/var/lib/mysql \
   -v /var/www:/var/www \
   lamtrantuan/docker-easyengine-stack
+```
+
+# Running services separatedly in its own container:
+* Database (MariaDB)
+```bash
+docker run --rm --name wp-ee-db -p 3306:3306 lamtrantuan/docker-easyengine-stack:db
+```
+
+* Web (Nginx, Php5-fpm, postfix by default.  HHVM, Redis, PhpMyAdmin could be manually turned on)
+```bash
+docker run --rm --name wp-ee-web -p 80:80 -p 443:443 -p 22222:22222 lamtrantuan/docker-easyengine-stack:web
+```
