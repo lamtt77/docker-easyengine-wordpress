@@ -30,7 +30,8 @@ ee site create wp.example.dev --user=YOURUSER --pass=YOURPSW --email=YOUREMAIL -
 	
 Alternative to step (3), we could create a pre-build stack image as follows:
 ```sh
-docker build -t ee-stack -f ee-stack/Dockerfile .
+cd ee-stack
+docker build -t ee-stack -f Dockerfile .
 ```
 
 And then run ee-stack:
