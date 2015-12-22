@@ -1,6 +1,26 @@
-# docker-easyengine-wordpress
+# TL;DR
 Orchestrate/Pre-Build the 15mins EasyEngine WordPress deployment into Docker image.
 
++ Requirements: Docker & Docker-Compose have already installed
+
+1- Let's start:
+```sh
+docker-compose up
+```
+2- You may see something like '... connection reset by peer ...', that's because DB host, username and password (random generated) have not filled-up
+```sh
+Ctrl-C -> gracefully stop containers
+docker exec -it dockereasyenginewordpress_wp-ee-db_1 bash
+cp .env.sample .env
+cat /etc/mysql/conf.d/my.cnf
+```
+3- Fill in blank fields in the file '.env' with user / password taken from above
+
+4- docker-compose up
+
+== Tada ==
+
+# docker-easyengine-wordpress
 Once completed, we will be going to have:
 
 1- Vanilla Official Ubuntu:14.04 docker base image
