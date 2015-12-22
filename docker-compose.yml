@@ -10,5 +10,6 @@ wp-ee-web:
 wp-ee-db:
   # We could optionally use office MariaDB docker image, but opted for EE to leverage their pre-configuration, prod experience and update
   image: lamtrantuan/docker-easyengine-stack:db
+  env_file: .env
   ports:
     - 3306:3306
