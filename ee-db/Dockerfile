@@ -8,9 +8,11 @@ COPY grantRemoteAccess.sql /
 ## ee stack install for mysql
 RUN ee stack install --mysql
 
+RUN ee stack start --mysql
+
 RUN chown -R mysql:mysql /var/lib/mysql
-RUN service mysql start
 RUN mysql -u root -p 'OACPbwFy' < grantRemoteAccess.sql
+
 RUN service mysql stop
 
 VOLUME ["/var/lib/mysql"]
