@@ -11,7 +11,7 @@ RUN ee stack install --mysql
 RUN ee stack start --mysql
 
 RUN chown -R mysql:mysql /var/lib/mysql
-RUN mysql -u root -p 'OACPbwFy' < grantRemoteAccess.sql
+RUN mysql -u root --password='OACPbwFy' < grantRemoteAccess.sql
 
 RUN service mysql stop
 
