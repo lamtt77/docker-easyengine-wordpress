@@ -1,0 +1,15 @@
+wp-ee-web:
+  image: lamtrantuan/docker-easyengine-stack:web
+  links:
+    - wp-ee-db:mysql
+  ports:
+    - 80:80
+    - 443:443
+    - 22222:22222
+wp-ee-db:
+  # We could optionally use office MariaDB docker image, but opted for EE to leverage their pre-configuration, prod experience and update
+  image: lamtrantuan/docker-easyengine-stack:db
+  environment:
+    MYSQL_ROOT_PASSWORD: OACPbwFy
+  ports:
+    - 3306:3306

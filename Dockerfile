@@ -16,7 +16,8 @@ RUN wget -qO ee rt.cx/ee && sudo bash ee
 ## Source auto completion
 CMD "source /etc/bash_completion.d/ee_auto.rc"
 
-EXPOSE 80 443 22222
+## Wont expose from base image, their extent image will take over
+#EXPOSE 80 443 22222
 
 # Define default command.
 CMD ["bash"]

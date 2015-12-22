@@ -1,14 +1,19 @@
 FROM lamtrantuan/docker-easyengine-wordpress
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
+## Install mysql-client to connect to remote DB
+RUN apt-get update && apt-get install mysql-client
+
+COPY my.cnf /etc/mysql/conf.d/my.cnf
+COPY ee.conf /etc/ee/ee.conf
+COPY startWeb.sh /
+
 ## ee stack install for nginx and php5-fpm
 RUN ee stack install --nginx
 RUN ee stack install --php
 RUN ee stack install --postfix
 
 VOLUME ["/var/www"]
-
-COPY startWeb.sh /
 
 ENTRYPOINT /startWeb.sh
 
