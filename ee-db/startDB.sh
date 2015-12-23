@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "MariaDB is Starting, please wait..."
+echo "MariaDB is starting, please wait..."
 ee stack start --mysql
 
 ./grantRemoteAccess.sh

@@ -1,31 +1,50 @@
-# TL;DR
-Orchestrate/Pre-Build the 15mins EasyEngine WordPress deployment into Docker image.
+# TL;DR - One-command deployment
+Orchestrate/Pre-Build the 10-min EasyEngine WordPress deployment into Docker image.
 
 + Requirements: Docker & Docker-Compose have already installed
 
-1- Let's start:
+1- Let's start
 ```sh
+cp .env.sample .env --> Use your favourite text edit and fill up blank fields in the file '.env' with your secret user & password
 docker-compose up
 ```
-2- You may see something like '... connection reset by peer ...', that's because DB host, username and password (random generated) have not filled-up
+
+Note that maria auto-generated password at /etc/mysql/conf.d/my.cnf will be ignored and replaced by your new one set at '.env'
+
+== Tada == 
+
+10-min deployment reduced to ~2min -- assumed that internet speed of your cloud provider should be on par with AWS, DigitalOcean, Gcloud Compute (my test was gcloud)
+
+2- Just go and create your wordpress site, automatically
 ```sh
-Ctrl-C -> gracefully stop containers
-docker exec -it dockereasyenginewordpress_wp-ee-db_1 bash
-cp .env.sample .env
-cat /etc/mysql/conf.d/my.cnf
+docker exec dockereasyenginewordpress_wp-ee-web_1 \
+  ee site create wp.example.dev --user=YOURUSER --pass=YOURPSW --email=YOUREMAIL
 ```
-3- Fill in blank fields in the file '.env' with user / password taken from above
 
-4- docker-compose up
+Note
++ 'docker ps' would reveal the name of your 'wp-ee-web' container in case of needed.
++ Please ensure your /etc/hosts contain en entry for 'wp.example.dev' if you have not owned that domain yet
 
+3- Getting bored with that name, want to delete and create new site
+```sh
+docker exec dockereasyenginewordpress_wp-ee-web_1 \
+  ee site delete --no-prompt wp.example.dev
+```
 == Tada ==
 
+# SECURITY
+* Please do change to your-own secure http password (admin port 22222) at first run of the deployed image
+```sh
+docker exec dockereasyenginewordpress_wp-ee-web_1 bash
+ee secure --auth
+```
+
 # docker-easyengine-wordpress
-Once completed, we will be going to have:
+Once completed, we will be going to have
 
 1- Vanilla Official Ubuntu:14.04 docker base image
 
-2- EasyEngine base installation created:
+2- EasyEngine base installation created
 ```sh
 apt-get install wget
 wget -qO ee rt.cx/ee && sudo bash ee
@@ -38,41 +57,35 @@ ee stack install
 ee stack start
 ```
 
-4- Once completed, a popular WordPress site is ready to get built automatically by the following command:
+4- Once completed, a popular WordPress site is ready to get built automatically by the following command
 ```sh
 ee site create wp.example.dev --user=YOURUSER --pass=YOURPSW --email=YOUREMAIL
 ```
 
-+ Or if you like to start with multi-site wordpress:
++ Or if you like to start with multi-site wordpress
 ```sh
 ee site create wp.example.dev --user=YOURUSER --pass=YOURPSW --email=YOUREMAIL --wpsubdom
 ```
 	
-Alternative to step (3), we could create a pre-build stack image as follows:
+Alternative to step (3), we could create a pre-build stack image as follows
 ```sh
 cd ee-stack
 docker build -t ee-stack -f Dockerfile .
 ```
 
-And then run ee-stack:
+And then run ee-stack
 ```sh
 docker run --rm -p 80:80 -p 443:443 -p 22222:22222 ee-stack
 ```
 A file type mis-match warning could be ignored if encountered.  Note that 'ee stack start' will be triggered automatically. 
 
-Review entrypoint for the stack services:
+Review entrypoint for the stack services
 ```sh
 docker exec -it ee-stack bash
 -->#$ /startStack.sh
 ```
 
 The pre-build Docker images are available to pull from Docker.  Please see Docker Auto Build section. 
-
-# SECURITY
-* Please do change your secure http password (admin port 22222) at first run of the ee-stack image:
-```sh
-ee secure --auth
-```
 
 # phusion/baseimage
 * Switch to phusion-baseimage branch
@@ -98,13 +111,13 @@ sudo docker cp wp-ee-stack:/var/lib/mysql/ /var/lib/
 ```
 
 + MariaDB 10.1 is having an issue with mapping volume while 10.0 DOES work! So workaroud if still prefer to use 10.1
-```hack
+```sh
 sudo useradd -U mysql && sudo chown -R mysql:mysql /var/lib/mysql
 docker exec -it wp-ee-stack bash
 id mysql -> get UID and GID
 exit
 
-+ Return to host, use usermod and groupmod to modify host's mysql to UID and GID above 
+Return to host, use usermod and groupmod to modify host's mysql to UID and GID above 
 ```
 
 ```sh
@@ -116,7 +129,7 @@ docker run --rm --name wp-ee-stack \
   lamtrantuan/docker-easyengine-stack
 ```
 
-# Running services separatedly in its own container:
+# Running services separatedly in its own container
 * Database (MariaDB)
 ```bash
 docker run --rm --name wp-ee-db -p 3306:3306 lamtrantuan/docker-easyengine-stack:db
