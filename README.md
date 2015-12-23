@@ -5,7 +5,8 @@ Orchestrate/Pre-Build the 10-min EasyEngine WordPress deployment into Docker ima
 
 1- Let's start
 ```sh
-cp .env.sample .env --> Use your favourite text edit and fill up blank fields in the file '.env' with your secret user & password
+cp .env.sample .env 
+  --> Edit and fill up blank fields in the file '.env' with your secret user & password
 docker-compose up
 ```
 
