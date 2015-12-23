@@ -15,7 +15,7 @@ Note that maria auto-generated password at /etc/mysql/conf.d/my.cnf will be igno
 == Tada == 
 
 Pros:
-+ 10-min deployment reduced to ~2min -- assumed that internet speed of your cloud provider should be on par with AWS, DigitalOcean, Gcloud Compute (my test was gcloud)
++ 10-min deployment reduced to ~3min -- assumed that internet speed of your cloud provider should be on par with AWS, DigitalOcean, Gcloud Compute (my test was gcloud)
 + Our deployment is now 'portable' and 'cloud provider' independent
 
 Trade-off:
@@ -37,6 +37,16 @@ docker exec dockereasyenginewordpress_wp-ee-web_1 \
   ee site delete --no-prompt wp.example.dev
 ```
 == Tada ==
+
+Bonus: I used the following to create my Gcloud Docker VM ('docker-machine' required):
+```sh
+docker-machine create --driver google \
+  --google-project myDockerPrj \
+  --google-zone CHANGE-TO-YOUR-ZONE \
+  --google-machine-type g1-small \
+  --google-disk-size 30 \
+  myVM
+```
 
 # SECURITY
 * Please do change to your-own secure http password (admin port 22222) at first run of the deployed image
