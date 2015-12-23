@@ -13,7 +13,12 @@ Note that maria auto-generated password at /etc/mysql/conf.d/my.cnf will be igno
 
 == Tada == 
 
-10-min deployment reduced to ~2min -- assumed that internet speed of your cloud provider should be on par with AWS, DigitalOcean, Gcloud Compute (my test was gcloud)
+Pros:
++ 10-min deployment reduced to ~2min -- assumed that internet speed of your cloud provider should be on par with AWS, DigitalOcean, Gcloud Compute (my test was gcloud)
++ Our deployment is now 'portable' and 'cloud provider' independent
+
+Trade-off:
+- Installation time of docker & docker-compose might get longer than 10-min if you are not familiar with 'Docker'.  The good news is that most cloud providers support Docker-preinstalled -- You just need to pick the appropriate VPS and install docker-compose through 'wget'. 
 
 2- Just go and create your wordpress site, automatically
 ```sh
