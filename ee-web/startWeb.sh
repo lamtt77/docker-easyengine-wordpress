@@ -9,4 +9,8 @@ sed -i "s/REMOTE_MYSQL_PASSWORD/$REMOTE_MYSQL_PASSWORD/" /etc/mysql/conf.d/my.cn
 sed -i "s/PUBLIC_IP_OF_EASYENGINE_SERVER/$PUBLIC_IP_OF_EASYENGINE_SERVER/" /etc/ee/ee.conf
 
 ee stack start
+
+echo 'Configuration finished! Now reporting latest status of all services...'
+ee info
+
 tail -f /var/log/ee/ee.log
