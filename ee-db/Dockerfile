@@ -8,6 +8,8 @@ COPY grantRemoteAccess.sh /
 ## ee stack install for mysql
 RUN ee stack install --mysql
 
+RUN chown -R mysql:mysql /var/lib/mysql
+
 VOLUME ["/var/lib/mysql"]
 
 ENTRYPOINT /startDB.sh
