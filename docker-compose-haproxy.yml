@@ -1,0 +1,32 @@
+#wp-ee-db:
+  #image: lamtrantuan/docker-easyengine-stack:db
+  #env_file: .env
+  #expose:
+    #- 3306
+wp-ee-weba:
+  image: lamtrantuan/docker-easyengine-stack:web
+  env_file: .env 
+  #links:
+    #- wp-ee-db:mysql
+  expose:
+    - 80
+    - 443
+    - 22222
+wp-ee-webb:
+  image: lamtrantuan/docker-easyengine-stack:web
+  env_file: .env
+  #links:
+    #- wp-ee-db:mysql
+  expose:
+    - 80
+    - 443
+    - 22222
+wp-ee-webc:
+  image: lamtrantuan/docker-easyengine-stack:web
+  env_file: .env
+  #links:
+    #- wp-ee-db:mysql
+  expose:
+    - 80
+    - 443
+    - 22222

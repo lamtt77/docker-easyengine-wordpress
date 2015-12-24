@@ -1,0 +1,28 @@
+wp-db-vol:
+  image: busybox
+  volumes: 
+    - /var/lib/mysql:/var/lib/mysql
+  tty: true
+wp-web-vol:
+  image: busybox
+  volumes:
+    - /var/www:/var/www
+  tty: true
+wp-ee-db:
+  image: lamtrantuan/docker-easyengine-stack:db
+  volumes_from:
+    - wp-db-vol
+  env_file: .env
+  ports:
+    - 3306:3306
+wp-ee-web:
+  image: lamtrantuan/docker-easyengine-stack:web
+  volumes_from:
+    - wp-web-vol
+  env_file: .env 
+  links:
+    - wp-ee-db:mysql
+  ports:
+    - 80:80
+    - 443:443
+    - 22222:22222
