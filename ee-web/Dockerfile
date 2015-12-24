@@ -13,8 +13,6 @@ RUN ee stack install --nginx
 RUN ee stack install --php
 RUN ee stack install --postfix
 
-RUN chown -R www-data:www-data /var/www
-
 VOLUME ["/var/www"]
 
 ENTRYPOINT /startWeb.sh
