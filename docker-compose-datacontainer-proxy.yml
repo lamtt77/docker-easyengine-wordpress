@@ -1,13 +1,3 @@
-wp-db-proxy:
-  image: busybox
-  volumes_from:
-    - wp-db-vol
-  tty: true
-wp-web-proxy:
-  image: busybox
-  volumes_from:
-    - wp-web-vol
-  tty: true
 wp-ee-db:
   image: lamtrantuan/docker-easyengine-stack:db
   volumes_from:
