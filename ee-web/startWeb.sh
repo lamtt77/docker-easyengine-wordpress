@@ -11,6 +11,7 @@ sed -i "s/PUBLIC_IP_OF_EASYENGINE_SERVER/$PUBLIC_IP_OF_EASYENGINE_SERVER/" /etc/
 
 chown -R www-data:www-data /var/www
 ee stack start
+service redis-server start
 
 echo '====>Configuration finished! Now reporting latest status of all services...'
 ee info
