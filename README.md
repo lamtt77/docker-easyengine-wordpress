@@ -126,16 +126,6 @@ sudo docker cp wp-ee-stack:/var/www/ /var/
 sudo docker cp wp-ee-stack:/var/lib/mysql/ /var/lib/
 ```
 
-+ MariaDB 10.1 is having an issue with mapping volume while 10.0 DOES work! So workaroud if still prefer to use 10.1
-```sh
-sudo useradd -U mysql && sudo chown -R mysql:mysql /var/lib/mysql
-docker exec -it wp-ee-stack bash
-id mysql -> get UID and GID
-exit
-
-Return to host, use usermod and groupmod to modify host's mysql to UID and GID above 
-```
-
 ```sh
 docker stop wp-ee-stack
 docker run --rm --name wp-ee-stack \
