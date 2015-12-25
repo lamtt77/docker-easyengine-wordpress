@@ -3,7 +3,6 @@ MAINTAINER Lam Tran <lamtt77@gmail.com>
 
 COPY startDB.sh /
 COPY my.cnf /etc/mysql/my.cnf
-COPY grantRemoteAccess.sh /
 
 ## ee stack install for mysql
 RUN ee stack install --mysql
