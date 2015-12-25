@@ -3,7 +3,7 @@ FROM lamtrantuan/docker-easyengine-wordpress
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
 ## ee stack install -- FULL
-RUN ee stack install
+RUN ee stack install --all
 
 VOLUME ["/var/lib/mysql", "/var/www"]
 
