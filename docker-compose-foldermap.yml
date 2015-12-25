@@ -11,6 +11,8 @@ wp-ee-web:
   volumes:
     - /var/www:/var/www
     - /etc/nginx:/etc/nginx
+    - /var/lib/ee:/var/lib/ee
+    - /etc/ee:/etc/ee
   links:
     - wp-ee-db:mysql
   ports:

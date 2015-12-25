@@ -12,6 +12,7 @@ COPY startWeb.sh /
 RUN ee stack install --nginx
 RUN ee stack install --php
 RUN ee stack install --postfix
+RUN ee stack install --redis
 
 VOLUME ["/var/www"]
 

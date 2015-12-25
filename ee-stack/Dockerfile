@@ -2,8 +2,8 @@
 FROM lamtrantuan/docker-easyengine-wordpress
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
-## ee stack install for mysql and web
-RUN ee stack install --web
+## ee stack install -- FULL
+RUN ee stack install
 
 VOLUME ["/var/lib/mysql", "/var/www"]
 
