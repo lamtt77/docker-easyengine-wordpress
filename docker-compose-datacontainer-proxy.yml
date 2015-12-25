@@ -1,14 +1,24 @@
+wp-db-proxy:
+  image: busybox
+  volumes_from:
+    - wp-db-vol
+  tty: true
+wp-web-proxy:
+  image: busybox
+  volumes_from:
+    - wp-web-vol
+  tty: true
 wp-ee-db:
   image: lamtrantuan/docker-easyengine-stack:db
   volumes_from:
-    - wp-db-vol
+    - wp-db-proxy
   env_file: .env
   ports:
     - 3306:3306
 wp-ee-web:
   image: lamtrantuan/docker-easyengine-stack:web
   volumes_from:
-    - wp-web-vol
+    - wp-web-proxy
   env_file: .env 
   links:
     - wp-ee-db:mysql
