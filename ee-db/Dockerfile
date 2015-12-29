@@ -1,6 +1,7 @@
 FROM lamtrantuan/docker-easyengine-wordpress
 MAINTAINER Lam Tran <lamtt77@gmail.com>
 
+COPY my.cnf /etc/mysql/conf.d/my.cnf
 COPY startDB.sh /
 
 ## ee stack install for mysql

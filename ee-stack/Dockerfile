@@ -5,7 +5,7 @@ MAINTAINER Lam Tran <lamtt77@gmail.com>
 ## ee stack install
 RUN ee stack install --web
 RUN ee stack install --wpcli
-RUN ee stack install --utils
+#RUN ee stack install --utils
 
 VOLUME ["/var/lib/mysql", "/var/www"]
 
