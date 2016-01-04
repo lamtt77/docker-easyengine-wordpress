@@ -4,6 +4,7 @@ wp-ee-db:
   env_file: .env
   ports:
     - 3306:3306
+  restart: always
 wp-ee-web:
   image: lamtrantuan/docker-easyengine-stack:web
   env_file: .env 
@@ -13,3 +14,4 @@ wp-ee-web:
     - 80:80
     - 443:443
     - 22222:22222
+  restart: always

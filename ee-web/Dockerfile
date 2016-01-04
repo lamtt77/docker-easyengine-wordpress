@@ -14,7 +14,7 @@ RUN ee stack install --php
 RUN ee stack install --postfix
 RUN ee stack install --redis
 
-VOLUME ["/var/www"]
+VOLUME ["/var/www", "/etc/nginx", "/var/lib/ee", "/etc/ee"]
 
 ENTRYPOINT /startWeb.sh
 
